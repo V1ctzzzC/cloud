@@ -1,0 +1,6 @@
+Flask
+requests
+paramiko
+pandas
+google-cloud-storage
+pytz
