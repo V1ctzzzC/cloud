@@ -34,7 +34,7 @@ FILE_TO_CHECK = 'estoque_disponivel.csv'
 API_URL = 'https://api.bling.com.br/Api/v3/estoques'
 LOG_FILE = "/tmp/log_envio_api.log"  # Usar um caminho temporário
 # Configuração do log
-logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format="%(asctime)s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 
 # Configuração de autenticação na API do Bling
 TOKEN_FILE = "token_novo.json"
@@ -47,7 +47,7 @@ DEPOSITO_ID = 14888163276  # Substitua pelo ID do depósito desejado
 # Defina manualmente o ID do projeto
 PROJECT_ID = "api-bling-450013"
 BLOB_NAME = "Estoque.xlsx"  # Caminho do arquivo no bucket
-LOCAL_FILE = "/tmp/Estoque.xlsx"  # Caminho temporário no servidor
+LOCAL_FILE = "/tmp/estoque.xlsx"  # Caminho temporário no servidor
 
 def carregar_credenciais():
     """Carrega o arquivo de credenciais diretamente do bucket."""
@@ -176,7 +176,7 @@ def obter_access_token():
     return "seu_access_token_aqui"  # Substitua pela lógica real
 
 def enviar_dados_api(resultado_df, deposito_id):
-    """Envia os dados processados para a API do Bling."""
+    """Envia os dados processados para a API do Bling e salva a planilha no bucket."""
     if resultado_df.empty:
         print("Nenhum dado para enviar à API.")
         return
